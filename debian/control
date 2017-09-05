@@ -1,0 +1,11 @@
+Source: kafka10
+Section: main
+Priority: optional
+Maintainer: Papertrail SRE <ops@papertrail.com>
+Build-Depends: debhelper, rsync, maven, openjdk-8-jdk
+
+Package: kafka10-pt
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Kafka10 packaged by Papertrail
+ In-house packaging of Kafka10 for Papertrail/Solarwinds
