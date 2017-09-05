@@ -1,0 +1,3 @@
+[submodule "klr"]
+	path = klr
+	url = https://github.com/tildeio/kafka-librato-reporter.git
