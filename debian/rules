@@ -10,10 +10,18 @@ override_dh_auto_install:
 	rsync -a $(CURDIR)/etc $(CURDIR)/debian/kafka10-pt
 	rsync -a $(CURDIR)/var $(CURDIR)/debian/kafka10-pt
 	rsync -a $(CURDIR)/usr $(CURDIR)/debian/kafka10-pt
+	cp $(CURDIR)/klr/target/kafka-librato-metrics-reporter-0.1.0.jar $(CURDIR)/debian/kafka10-pt/usr/lib/kafka/libs/
 
 override_dh_auto_build:
-	:
+	mkdir $(CURDIR)/mvn
+	bash $(CURDIR)/mvnconf/settings.xml.sh $(CURDIR)/mvn $(CURDIR)/mvnconf/settings.xml
+	( cd $(CURDIR)/klr && mvn -gs $(CURDIR)/mvnconf/settings.xml compile )
+	( cd $(CURDIR)/klr && mvn -gs $(CURDIR)/mvnconf/settings.xml package )
 
 override_dh_auto_configure:
 	:
 
+#override_dh_clean:
+#	dh_clean
+#	( cd $(CURDIR) && mvn clean )
+#

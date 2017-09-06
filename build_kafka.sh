@@ -15,7 +15,7 @@ download_url="http://mirror.cc.columbia.edu/pub/software/apache/kafka/${version}
 origdir="$(pwd)"
 
 #_ MAIN _#
-rm -rf ${name}*.deb
+rm -rf tmp
 if [ ! -f "${src_package}" ]; then
   wget ${download_url}
 fi
@@ -31,6 +31,8 @@ mkdir -p kafka-${version}/etc/kafka
 mkdir -p kafka-${version}/var/log/kafka
 mkdir -p kafka-${version}/debian
 
+rsync -a --exclude '.git*' ${origdir}/klr kafka-${version}
+rsync -a --exclude '.git*' ${origdir}/mvnconf kafka-${version}
 cp ${origdir}/kafka-broker.default kafka-${version}/etc/default/kafka-broker
 cp ${origdir}/kafka-broker.upstart.conf kafka-${version}/etc/init/kafka-broker.conf
 cp ${origdir}/debian/* kafka-${version}/debian
@@ -41,18 +43,6 @@ mv config/log4j.properties config/server.properties ../kafka-${version}/etc/kafk
 mv * ../kafka-${version}/usr/lib/kafka
 cd ../kafka-${version}
 
-#fpm -t deb \
-#    -n ${name} \
-#    -v ${version}${package_version} \
-#    --description "${description}" \
-#    --url="{$url}" \
-#    -a ${arch} \
-#    --category ${section} \
-#    --vendor "" \
-#    --license "${license}" \
-#    -m "${USER}@localhost" \
-#    --prefix=/ \
-#    -s dir \
-#    -- .
-#mv kafka*.deb ${origdir}
+dpkg-buildpackage -S -us -ui -uc -nc
+
 popd
