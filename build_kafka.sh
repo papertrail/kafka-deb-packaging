@@ -2,7 +2,7 @@
 set -e
 set -u
 name=kafka
-version=0.10.1.1
+version=0.10.2.0
 scala_version=2.11
 description="Apache Kafka is a distributed publish-subscribe messaging system."
 url="https://kafka.apache.org/"
@@ -15,6 +15,11 @@ download_url="http://mirror.cc.columbia.edu/pub/software/apache/kafka/${version}
 origdir="$(pwd)"
 
 #_ MAIN _#
+if [ ! -e klr/README.md ]; then
+  git submodule init
+  git submodule update
+fi
+
 rm -rf tmp
 if [ ! -f "${src_package}" ]; then
   wget ${download_url}
@@ -43,6 +48,6 @@ mv config/log4j.properties config/server.properties ../kafka-${version}/etc/kafk
 mv * ../kafka-${version}/usr/lib/kafka
 cd ../kafka-${version}
 
-dpkg-buildpackage -S -us -ui -uc -nc
+dpkg-buildpackage -S -us -uc -nc
 
 popd

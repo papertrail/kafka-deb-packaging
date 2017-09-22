@@ -1,3 +1,9 @@
+kafka10 (0.10.2.0-1) unstable; urgency=medium
+
+  * Bump kafka version
+
+ -- jaf <jeff@papertrail.com>  Thu, 21 Sep 2017 20:30:26 -0700
+
 kafka10 (0.10.1.1-1) unstable; urgency=medium
 
   * Initial release 
