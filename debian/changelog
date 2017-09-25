@@ -1,3 +1,9 @@
+kafka10 (0.10.2.0-2) unstable; urgency=medium
+
+  * Add systemd unit
+
+ -- jaf <jeff@papertrail.com>  Mon, 25 Sep 2017 15:52:10 -0700
+
 kafka10 (0.10.2.0-1) unstable; urgency=medium
 
   * Bump kafka version
