@@ -1,3 +1,9 @@
+kafka10 (0.10.2.0-3) unstable; urgency=medium
+
+  * Fix copy-pasta problem with systemd unit
+
+ -- jaf <jeff@papertrail.com>  Tue, 26 Sep 2017 16:03:11 -0700
+
 kafka10 (0.10.2.0-2) unstable; urgency=medium
 
   * Add systemd unit

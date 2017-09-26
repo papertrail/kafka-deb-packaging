@@ -10,4 +10,4 @@ User=kafka
 Group=kafka
 Environment=KAFKA_HOME=/usr/lib/kafka CONFIG_HOME=/etc/kafka
 ExecStart=/usr/lib/kafka/bin/kafka-server-start.sh /etc/kafka/server.properties
-ExecStop=/opt/kafka/bin/kafka-server-stop.sh
+ExecStop=/usr/lib/kafka/bin/kafka-server-stop.sh
