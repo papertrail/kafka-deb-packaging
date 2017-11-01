@@ -55,6 +55,8 @@ mv config/log4j.properties config/server.properties ../build/etc/kafka
 mv * ../build/usr/lib/kafka
 cd ../build
 
+patch -p0 < ../../../kafka-server-start.sh.pidfile.patch
+
 fpm -t deb \
     -n ${name} \
     -v ${version}${version_tag}${package_version} \

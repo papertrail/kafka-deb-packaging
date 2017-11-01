@@ -1,0 +1,9 @@
+--- usr/lib/kafka/bin/kafka-server-start.sh	2016-12-15 10:04:05.000000000 -0800
++++ usr/lib/kafka/bin/kafka-server-start.sh.new	2017-10-31 22:44:04.692890284 -0700
+@@ -41,4 +41,6 @@
+     ;;
+ esac
+ 
++echo $$ > ${KAFKA_PID_FILE:-/run/kafka/kafka.pid}
++
+ exec $base_dir/kafka-run-class.sh $EXTRA_ARGS kafka.Kafka "$@"
