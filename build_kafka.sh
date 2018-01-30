@@ -2,7 +2,7 @@
 set -e
 set -u
 name=kafka
-rersion=0.11.0.2
+version=0.11.0.2
 scala_version=2.11
 description="Apache Kafka is a distributed publish-subscribe messaging system."
 url="https://kafka.apache.org/"
