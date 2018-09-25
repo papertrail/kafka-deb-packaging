@@ -1,9 +1,12 @@
 #!/bin/bash
+KAFKA_VERSION=$1
+SCALA_VERSION=$2
+
 set -e
 set -u
 name=kafka
-version=2.0.0
-scala_version=2.11
+version=$KAFKA_VERSION
+scala_version=$SCALA_VERSION
 description="Apache Kafka is a distributed publish-subscribe messaging system."
 url="https://kafka.apache.org/"
 arch="all"
