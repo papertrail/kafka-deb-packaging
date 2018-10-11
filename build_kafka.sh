@@ -1,15 +1,16 @@
 #!/bin/bash
 KAFKA_VERSION=$1
 SCALA_VERSION=$2
+ARCH_TYPE=$3
 
 set -e
 set -u
 name=kafka
 version=$KAFKA_VERSION
 scala_version=$SCALA_VERSION
+arch=$ARCH
 description="Apache Kafka is a distributed publish-subscribe messaging system."
 url="https://kafka.apache.org/"
-arch="all"
 section="misc"
 license="Apache Software License 2.0"
 package_version="-1"
@@ -41,6 +42,7 @@ mv config/log4j.properties config/server.properties ../build/etc/kafka
 mv * ../build/usr/lib/kafka
 cd ../build
 
+
 fpm -t deb \
     -n ${name} \
     -v ${version}${package_version} \
@@ -50,7 +52,7 @@ fpm -t deb \
     --category ${section} \
     --vendor "" \
     --license "${license}" \
-    -m "${USER}@localhost" \
+    -m "buildhost@localhost" \ # hard coding buildhost in replace of USER. No USER set, will have unbound variable error.
     --prefix=/ \
     -s dir \
     -- .
