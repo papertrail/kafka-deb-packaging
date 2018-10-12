@@ -52,7 +52,7 @@ fpm -t deb \
     --category ${section} \
     --vendor "" \
     --license "${license}" \
-    -m "buildhost@localhost" \ # hard coding buildhost in replace of USER. No USER set, will have unbound variable error.
+    -m "buildhost@localhost" \
     --prefix=/ \
     -s dir \
     -- .
