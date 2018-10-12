@@ -8,7 +8,7 @@ set -u
 name=kafka
 version=$KAFKA_VERSION
 scala_version=$SCALA_VERSION
-arch=$ARCH
+arch=$ARCH_TYPE
 description="Apache Kafka is a distributed publish-subscribe messaging system."
 url="https://kafka.apache.org/"
 section="misc"
